@@ -1,6 +1,6 @@
-
-
-
+require 'pry'
+require 'nokogiri'
+require 'open-uri'
 
 require_relative "../lib/top_movies/version"
 require_relative "../lib/top_movies/cli"
