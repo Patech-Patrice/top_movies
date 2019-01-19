@@ -1,15 +1,20 @@
-class TopMovies::CLI
+class CLI
 
   def start
-    puts "Welcome to the Hollywood Top 10O Movies of All Time!"
-    puts "What number movie would you like to view? enter (1-100)"
-    TopMovies::Scraper.new.scrape_movies
+    puts "Welcome to the Top Rated Movies of 2018-2019!"
+    puts "What movie would you like to view?"
+    Scraper.scrape_movies
 
     #display list of movies to users
     list_movies
   end
 
   def list_movies
+    all_movies = Movie.all_movies
+    #binding.pry
+    all_movies.each do |movie|
+      puts movie.title
+    end
   end
 
 end

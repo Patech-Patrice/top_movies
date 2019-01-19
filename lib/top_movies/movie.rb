@@ -1,11 +1,16 @@
-class TopMovies::Movie
-  attr_accessor :name, :genre, :year, :rating
-  @@all_items = []
+class Movie
+  attr_accessor :title, :genre, :year, :rating
 
-  def self.all_items
-  @@all
+  @@all_movies = []
+
+  def self.all_movies
+  @@all_movies
   end
 
   def self.create_movie
+      movie = Movie.new
+    @@all_movies << movie
+    movie
+    #binding.pry
   end
 end
