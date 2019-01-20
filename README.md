@@ -22,7 +22,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Type $ top_movies and follow the on screen prompts.
+
+
 
 ## Development
 
