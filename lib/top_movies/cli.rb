@@ -14,6 +14,9 @@ class CLI
     #binding.pry
     all_movies.each do |movie|
       puts movie.title
+      puts movie.overview
+      puts movie.year
+      puts movie.url
     end
   end
 
