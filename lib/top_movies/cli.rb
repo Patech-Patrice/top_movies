@@ -9,6 +9,7 @@ class CLI
   #display list of movies to users
     list_movies
     get_movie
+
   end
 
   def list_movies
@@ -29,19 +30,19 @@ class CLI
     all_movies = Movie.all_movies
     #all_movies.detect { |movie| movie.title.downcase == input}
     movie_choice = all_movies.detect { |movie| movie.title.downcase == input}
-    binding.pry
-    if input == '#{movie.title}'
-      puts "#{movie.title}. #{movie.overview}. #{movie.year}"
-    elsif input == nil
+
+    #binding.pry
+    if input = movie_choice.title
+      the_movie = all_movies
+      puts "#{movie_choice.title} - #{movie_choice.overview} - #{movie_choice.year}"
+      #puts "#{movie.title} #{movie.overview}-#{movie.year}"
+      #puts "#{movie_choice.title}"
+      #puts "#{movie.title} #{movie.overview} - #{movie.year}"
+      #puts "#{movie.title}. #{movie.overview}. #{movie.year}"
+    elsif input == ''
       puts "Please enter a valid title:"
-    elsif input == "exit"
-      goodbye
+    else input == "exit"
+       puts "Goodbye"
   end
 end
 end
-
-
-
-def goodbye
-    puts "Thank you for viewing the top 20 movies!!!"
-  end
