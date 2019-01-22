@@ -2,21 +2,26 @@ class Scraper
 
 
 def self.scrape_movies
-      page = Nokogiri::HTML(open("https://www.themoviedb.org/movie")) #open page
-      page.css('div.item.poster.card').each do |card|
+      page = Nokogiri::HTML(open("https://www.timeout.com/newyork/movies/100-best-movies-as-chosen-by-actors")) #open page
+
+      page.css('div.card-content').each do |card|
+
       movie = Movie.create_movie
-      title = card.css('a.title').text
-      overview = card.css('p.overview')[0].children.text
-      year = card.css('div.flex').text
-      #binding.pry
-      url = card.css('a.result')[0].attributes['href'].value
-      #binding.pry
+      title = card.css('h3.card-title').first.text.strip
+    
+      overview = card.css('div.js-card-desc-content').text
+      #genre = card.css('div.category.things-to-do').text
+
+
+
+
       movie.title = title
       movie.overview = overview
-      movie.year = year
-      movie.url = url
 
-    #binding.pry
+      #movie.genre = genre
+
+
+
   end
 end
 
