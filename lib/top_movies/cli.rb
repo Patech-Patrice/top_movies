@@ -1,9 +1,7 @@
 class CLI
 
-
-
   def start
-    puts "Welcome to the Top 20 Rated Movies of 2018-2019!"
+    puts "Welcome to the Top 100 Hollywood Rated Movies of All Time!"
     puts "What movie would you like to view?"
     Scraper.scrape_movies
   #display list of movies to users
@@ -15,39 +13,30 @@ class CLI
   def list_movies
     all_movies = Movie.all_movies
     all_movies.each.with_index(1) {|movie, index| puts "#{index} #{movie.title}"}
-    #binding.pry
-    #all_movies.each do |movie|
-      #puts movie.title
-      #puts movie.overview
-      #puts movie.genre
   end
 
-
-
-
-
-
   def get_movie
-    puts "Please enter the title of the movie you wish to view:"
-
-    input = gets.chomp.downcase
-
-
+    puts "Please enter the number of the movie you wish to view:(enter 1-100)"
+    input = gets.strip
+    index = input.to_i-1
+  if index.between?(0,99)
+      puts "#{Movie.all_movies[index].title}"
+    puts "#{Movie.all_movies[index].overview}:"
+    puts "#{Movie.all_movies[index].genre}"
+    #continue running program
+      #find the movie
+      #2nd scrape
+      #list the movie that corresponds with the input number
+    elsif
+      input == "list"
+      list_movies
+    elsif input == "exit"
+      puts "Goodbye"
+    else
+      puts "Invalid choice"
+      get_movie #recursive method ---calling the same method from inside of the method
     all_movies = Movie.all_movies
     all_movies.each.with_index(1) {|movie, index| puts "#{index} #{movie.title} "}
-    #movie_choice = all_movies.detect { |movie| movie.title.downcase == input}
-
-    #binding.pry
-
-    #binding.pry
-    if input == movie_choice
-      movie = gets.chomp
-
-
-      puts "#{movie.title} - #{movie.overview }"
-
-    elsif input == "exit"
-       puts "Goodbye"
   end
 end
 end

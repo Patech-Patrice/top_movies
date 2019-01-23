@@ -1,5 +1,5 @@
 class Movie
-  attr_accessor :title, :overview, :year, :url
+  attr_accessor :title, :overview, :genre
 
   @@all_movies = []
 
@@ -11,6 +11,5 @@ class Movie
       movie = Movie.new
     @@all_movies << movie
     movie
-    #binding.pry
   end
 end
