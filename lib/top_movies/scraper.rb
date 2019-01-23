@@ -6,22 +6,27 @@ def self.scrape_movies
       page.css('div.card-content').each do |card|
       movie = Movie.create_movie
       title = card.css('h3.card-title').first.text.strip
-      overview = card.css('div.js-card-desc-content').text
+      overview = card.css('div.js-card-desc-content').text.strip
       genre = card.css('div.category.things-to-do').text
-
+      url =  "https://www.timeout.com"  + page.css('div.card-content a')[0].attributes['href'].value
       movie.title = title
       movie.overview = overview
       movie.genre = genre
+      movie.url = url
     end
   end
 
 
-  def self.scrape_reviews(movie)
-    movie = Movie.create_movie
-    binding.pry
-    review_page = Nokogiri::HTML(open("")) #open page
-end
+  #def self.scrape_reviews(movie_object)
+    #movie = Movie.create_movie
+    #binding.pry
+    #review_page = Nokogiri::HTML(open(movie_object.url)) #open page
+    #reviews = review_page.css("div.sm-pt6").text.strip
+    #reviews.each do |review|
+      #ro.movie = movie_object
+  #end
+#end
 
 
-  
+
 end

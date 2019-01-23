@@ -15,30 +15,29 @@ class CLI
   end
 
   def get_movie
+    all_movies = Movie.all_movies
     puts "Please enter the number of the movie you wish to view:(enter 1-100)"
     input = gets.strip
     index = input.to_i-1
   if index.between?(0,99) #continue running program
     #find the movie
     puts "#{Movie.all_movies[index].title}"
-    puts "#{Movie.all_movies[index].overview}:"
+    #puts "#{Movie.all_movies[index].overview}:"
     puts "#{Movie.all_movies[index].genre}"
-    puts "For more info type (y) to view or type (exit) to quit."
+    puts "For more info type (y) to view or type (exit) to return to main menu."
       input = gets.strip.downcase
       if input == 'y' || input == 'yes'
-        puts ".....retrieving reviews"   
+        puts "#{Movie.all_movies[index].overview}:"
+        puts "#{Movie.all_movies[index].url}"
+        #puts ".....retrieving reviews"
+        #Scraper.scrape_reviews(all_movies[index])
       #2nd scrape
       #list the movie that corresponds with the input number
     elsif  input == "exit"
       goodbye
-      #puts "Thank you for viewing the Top 100 Hollywood Movies!!! Goodbye."
-      #puts "Thank you for viewing the Top 100 Hollywood Movies!!! Goodbye."
-      #get_movie #recursive method ---calling the same method from inside of the method
-    #else input == "exit"
   else
       puts "Invalid choice...."
-      get_movie
-      #all_movies = Movie.all_movies
+      get_movie #recursive method ---calling the same method from inside of the method
     end
  end
 end
