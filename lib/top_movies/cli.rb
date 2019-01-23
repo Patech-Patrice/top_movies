@@ -2,7 +2,6 @@ class CLI
 
   def start
     puts "Welcome to the Top 100 Hollywood Rated Movies of All Time!"
-    puts "What movie would you like to view?"
     Scraper.scrape_movies
   #display list of movies to users
     list_movies
