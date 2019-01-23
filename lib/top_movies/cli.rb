@@ -23,39 +23,25 @@ class CLI
     puts "#{Movie.all_movies[index].title}"
     puts "#{Movie.all_movies[index].overview}:"
     puts "#{Movie.all_movies[index].genre}"
-    want_more_info(movie)
       #2nd scrape
       #list the movie that corresponds with the input number
-
-      #elsif input == "exit"
-      #farewell
-    else
+    elsif
       puts "Sorry! Wrong command."
-      #list_movies
       get_movie #recursive method ---calling the same method from inside of the method
-      #start
+    else input == "exit"
+      goodbye
       all_movies = Movie.all_movies
-      #all_movies.each.with_index(1) {|movie, index| puts "#{index} #{movie.title} "}
  end
 end
 
-  #def want_more_info(movie)
-    #puts "Read more? (Y/N)"
-    #input = "nil"
-    #until input == "Y" || input == "N"
-      #input = gets.strip.downcase
-    #end
-    #puts "Farewell!"
-  #end
 
-
-  #def farewell
-    #puts "Would you like to try a different number movie? (y/n)"
-    #input = gets.strip.downcase
-    #if input == 'y' || input == 'yes'
-      #start
-    #else input = 'n' || input == 'no'
-      #puts "Thank you for viewing the Top 100 Hollywood Films of all Time.Goodbye!"
-    #end
-  #end
+  def goodbye
+      puts "Would you like to try a different movie number? (y/n)"
+      input = gets.strip.downcase
+      if input == 'y' || input == 'yes'
+      start
+      else input = 'n' || input == 'no'
+      puts "Thank you for viewing the Top 100 Hollywood Movies!!! Goodbye."
+    end
+  end
 end
