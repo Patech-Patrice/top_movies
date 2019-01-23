@@ -18,38 +18,44 @@ class CLI
     puts "Please enter the number of the movie you wish to view:(enter 1-100)"
     input = gets.strip
     index = input.to_i-1
-  if index.between?(0,99)
-      puts "#{Movie.all_movies[index].title}"
+  if index.between?(0,99) #continue running program
+    #find the movie
+    puts "#{Movie.all_movies[index].title}"
     puts "#{Movie.all_movies[index].overview}:"
     puts "#{Movie.all_movies[index].genre}"
-    #continue running program
-      #find the movie
+    want_more_info(movie)
       #2nd scrape
       #list the movie that corresponds with the input number
-    #elsif
-      #input == "list"
-      #list_movies
-    elsif input == "exit"
-      farewell
+
+      #elsif input == "exit"
+      #farewell
     else
-      puts "Invalid choice...."
+      puts "Sorry! Wrong command."
       #list_movies
       get_movie #recursive method ---calling the same method from inside of the method
-      start
-
-    all_movies = Movie.all_movies
-    all_movies.each.with_index(1) {|movie, index| puts "#{index} #{movie.title} "}
+      #start
+      all_movies = Movie.all_movies
+      #all_movies.each.with_index(1) {|movie, index| puts "#{index} #{movie.title} "}
  end
 end
 
+  #def want_more_info(movie)
+    #puts "Read more? (Y/N)"
+    #input = "nil"
+    #until input == "Y" || input == "N"
+      #input = gets.strip.downcase
+    #end
+    #puts "Farewell!"
+  #end
 
-  def farewell
-    puts "Would you like to try a different number movie? (y/n)"
-    input = gets.strip.downcase
-    if input == 'y' || input == 'yes'
-      start
-    else input = 'n' || input == 'no'
-      puts "Thank you for viewing the Top 100 Hollywood Films of all Time.Goodbye!"
-    end
-  end
+
+  #def farewell
+    #puts "Would you like to try a different number movie? (y/n)"
+    #input = gets.strip.downcase
+    #if input == 'y' || input == 'yes'
+      #start
+    #else input = 'n' || input == 'no'
+      #puts "Thank you for viewing the Top 100 Hollywood Films of all Time.Goodbye!"
+    #end
+  #end
 end
