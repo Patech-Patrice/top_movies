@@ -14,4 +14,14 @@ def self.scrape_movies
       movie.genre = genre
     end
   end
+
+
+  def self.scrape_reviews(movie)
+    movie = Movie.create_movie
+    binding.pry
+    review_page = Nokogiri::HTML(open("")) #open page
+end
+
+
+  
 end

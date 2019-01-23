@@ -23,14 +23,23 @@ class CLI
     puts "#{Movie.all_movies[index].title}"
     puts "#{Movie.all_movies[index].overview}:"
     puts "#{Movie.all_movies[index].genre}"
+    puts "For more info type (y) to view or type (exit) to quit."
+      input = gets.strip.downcase
+      if input == 'y' || input == 'yes'
+        puts ".....retrieving reviews"   
       #2nd scrape
       #list the movie that corresponds with the input number
-    elsif
-      puts "Sorry! Wrong command."
-      get_movie #recursive method ---calling the same method from inside of the method
-    else input == "exit"
+    elsif  input == "exit"
       goodbye
-      all_movies = Movie.all_movies
+      #puts "Thank you for viewing the Top 100 Hollywood Movies!!! Goodbye."
+      #puts "Thank you for viewing the Top 100 Hollywood Movies!!! Goodbye."
+      #get_movie #recursive method ---calling the same method from inside of the method
+    #else input == "exit"
+  else
+      puts "Invalid choice...."
+      get_movie
+      #all_movies = Movie.all_movies
+    end
  end
 end
 
@@ -45,3 +54,4 @@ end
     end
   end
 end
+#end
