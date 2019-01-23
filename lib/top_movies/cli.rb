@@ -29,16 +29,24 @@ class CLI
       if input == 'y' || input == 'yes'
         puts "#{Movie.all_movies[index].overview}:"
         puts "#{Movie.all_movies[index].url}"
-        #puts ".....retrieving reviews"
+      elsif input == 'n' || input == 'no'
+          puts "Invalid choice...."
+          #puts ".....retrieving reviews"
         #Scraper.scrape_reviews(all_movies[index])
       #2nd scrape
       #list the movie that corresponds with the input number
     elsif  input == "exit"
       goodbye
+    #elsif input == '' || input == 'no'
   else
+      puts ""
       puts "Invalid choice...."
-      get_movie #recursive method ---calling the same method from inside of the method
+      get_movie
     end
+  #else
+      #puts "Invalid choice...."
+      #get_movie #recursive method ---calling the same method from inside of the method
+    #end
  end
 end
 
