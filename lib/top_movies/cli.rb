@@ -40,16 +40,20 @@ class CLI
       goodbye
     #elsif input == '' || input == 'no'
     else #if index.between
-      puts ""
-      puts "Invalid choice...."
-      get_movie
+      invalid_choice
     end #if input y or yes
   else
-    puts "Invalid choice...."
-    get_movie #recursive method ---calling the same method from inside of the method
-    #end
+    invalid_choice
   end #if index.between
 end
+
+  def invalid_choice
+    puts ""
+    puts "Invalid choice...."
+    get_movie
+  end
+
+
 
 
   def goodbye
