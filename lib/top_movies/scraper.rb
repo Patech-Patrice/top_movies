@@ -1,7 +1,7 @@
 class Scraper
 
 
-def self.scrape_movies
+  def self.scrape_movies
       page = Nokogiri::HTML(open("https://www.timeout.com/newyork/movies/100-best-movies-as-chosen-by-actors")) #open page
       page.css('div.card-content').each do |card|
       movie = Movie.create_movie
@@ -15,18 +15,4 @@ def self.scrape_movies
       movie.url = url
     end
   end
-
-
-  #def self.scrape_reviews(movie_object)
-    #movie = Movie.create_movie
-    #binding.pry
-    #review_page = Nokogiri::HTML(open(movie_object.url)) #open page
-    #reviews = review_page.css("div.sm-pt6").text.strip
-    #reviews.each do |review|
-      #ro.movie = movie_object
-  #end
-#end
-
-
-
 end
