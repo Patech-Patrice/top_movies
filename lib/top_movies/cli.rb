@@ -18,36 +18,37 @@ class CLI
     all_movies = Movie.all_movies
     puts "Please enter the number of the movie you wish to view:(enter 1-100)"
     input = gets.strip
+    #binding.pry
     index = input.to_i-1
-  if index.between?(0,99) #continue running program
+  if index.between?(0,99)#if index.between #continue running program
     #find the movie
     puts "#{Movie.all_movies[index].title}"
     #puts "#{Movie.all_movies[index].overview}:"
     puts "#{Movie.all_movies[index].genre}"
     puts "For more info type (y) to view or type (exit) to return to main menu."
-      input = gets.strip.downcase
-      if input == 'y' || input == 'yes'
-        puts "#{Movie.all_movies[index].overview}:"
-        puts "#{Movie.all_movies[index].url}"
-      elsif input == 'n' || input == 'no'
-          puts "Invalid choice...."
+    more_info_input = gets.strip.downcase
+    if more_info_input == 'y' || more_info_input == 'yes' #if input y or yes
+      puts "#{Movie.all_movies[index].overview}:"
+      puts "#{Movie.all_movies[index].url}"
+    elsif imore_info_input == 'n' || more_info_input == 'no'
+      puts "Invalid choice...."
           #puts ".....retrieving reviews"
         #Scraper.scrape_reviews(all_movies[index])
       #2nd scrape
       #list the movie that corresponds with the input number
-    elsif  input == "exit"
+    elsif  more_info_input == "exit"
       goodbye
     #elsif input == '' || input == 'no'
-  else
+    else #if index.between
       puts ""
       puts "Invalid choice...."
       get_movie
-    end
-  #else
-      #puts "Invalid choice...."
-      #get_movie #recursive method ---calling the same method from inside of the method
+    end #if input y or yes
+  else
+    puts "Invalid choice...."
+    get_movie #recursive method ---calling the same method from inside of the method
     #end
- end
+  end #if index.between
 end
 
 
