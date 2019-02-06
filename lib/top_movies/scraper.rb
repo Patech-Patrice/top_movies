@@ -8,11 +8,11 @@ class Scraper
       title = card.css('h3.card-title').first.text.strip
       overview = card.css('div.js-card-desc-content').text.strip
       genre = card.css('div.category.things-to-do').text
-      url =  "https://www.timeout.com"  + page.css('div.card-content a')[0].attributes['href'].value
+      #url =  "https://www.timeout.com"  + page.css('div.card-content a')[0].attributes['href'].value
       movie.title = title
       movie.overview = overview
       movie.genre = genre
-      movie.url = url
+      #movie.url = url
     end
   end
 end

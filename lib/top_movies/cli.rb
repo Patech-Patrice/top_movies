@@ -3,7 +3,6 @@ class CLI
   def start
     puts "Welcome to the Top 100 Hollywood Rated Movies of All Time!"
     Scraper.scrape_movies
-  #display list of movies to users
     list_movies
     get_movie
 
@@ -20,15 +19,14 @@ class CLI
     input = gets.strip
     index = input.to_i-1
   if index.between?(0,99)
-    #find the movie
     puts "#{Movie.all_movies[index].title}"
     puts "#{Movie.all_movies[index].genre}"
     puts "For more info type (y) to view or type (exit) to return to main menu."
     more_info_input = gets.strip.downcase
     if more_info_input == 'y' || more_info_input == 'yes'
       puts "#{Movie.all_movies[index].overview}:"
-      puts "#{Movie.all_movies[index].url}"
-      #list the movie that corresponds with the input number
+      puts "Want to know more? Type (y) to view or type (exit)."
+      want_more_info#2nd level scrape
     elsif  more_info_input == "exit"
       goodbye
     else
@@ -36,6 +34,15 @@ class CLI
     end
   else
     invalid_choice
+  end
+end
+
+def want_more_info
+  want_more_input = gets.strip.downcase
+  if want_more_input == 'y' || want_more_input == 'yes'
+    #2nd Level Scraper
+  else want_more_input == 'exit'
+    goodbye
   end
 end
 
