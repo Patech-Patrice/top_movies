@@ -27,7 +27,8 @@ class CLI
       puts "#{Movie.all_movies[index].overview}:"
       puts "#{Movie.all_movies[index].url}"
       puts "Want to know more? Type (y) to view or type (exit)."
-      want_more_info(Movie.all_movies[index])#2nd level scrape
+      movie = Movie.all_movies[index]
+      want_more_info(movie)#2nd level scrape
     elsif  more_info_input == "exit"
       goodbye
     else
