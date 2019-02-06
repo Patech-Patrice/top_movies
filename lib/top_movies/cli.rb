@@ -13,21 +13,20 @@ class CLI
   end
 
   def get_movie
-    all_movies = Movie.all_movies
     puts "Please enter the number of the movie you wish to view:(enter 1-100)"
     input = gets.strip
     index = input.to_i-1
+    movie_object = Movie.all_movies[index]
   if index.between?(0,99)
-    puts "#{Movie.all_movies[index].title}"
-    puts "#{Movie.all_movies[index].genre}"
+    puts "#{movie_object.title}"
+    puts "#{movie_object.genre}"
     puts "For more info type (y) to view or type (exit) to return to main menu."
     more_info_input = gets.strip.downcase
     if more_info_input == 'y' || more_info_input == 'yes'
-      puts "#{Movie.all_movies[index].overview}:"
-      puts "#{Movie.all_movies[index].url}"
+      puts "#{movie_object.overview}:"
+      puts "#{movie_object.url}"
       puts "Want to know more? Type (y) to view or type (exit)."
-      movie = Movie.all_movies[index]
-      want_more_info(movie)#2nd level scrape
+      want_more_info(movie_object)#2nd level scrape
     elsif  more_info_input == "exit"
       goodbye
     else
