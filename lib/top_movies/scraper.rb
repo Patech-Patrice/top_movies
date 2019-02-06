@@ -16,15 +16,8 @@ class Scraper
   end
 
   def self.scrape_reviews(movie)
-    movie = Movie.all_movies[index]
     review_page = Nokogiri::HTML(open(movie.url))
-    binding.pry
-    reviews = review_page.css('h3.card-title')
-    #reviews.each do |review_html|
-    #binding.pry
-    #url = "https://www.timeout.com" + review_page.css()
-    #review = movie_object.css()
-    #movie.review = review
-  #end
-end
+    review = review_page.css('div.sm-pt6').text.strip
+    movie.review = review
+  end
 end
