@@ -25,8 +25,9 @@ class CLI
     more_info_input = gets.strip.downcase
     if more_info_input == 'y' || more_info_input == 'yes'
       puts "#{Movie.all_movies[index].overview}:"
+      puts "#{Movie.all_movies[index].url}"
       puts "Want to know more? Type (y) to view or type (exit)."
-      want_more_info#2nd level scrape
+      want_more_info(Movie.all_movies[index])#2nd level scrape
     elsif  more_info_input == "exit"
       goodbye
     else
@@ -37,14 +38,22 @@ class CLI
   end
 end
 
-def want_more_info
+def want_more_info(movie)
   want_more_input = gets.strip.downcase
   if want_more_input == 'y' || want_more_input == 'yes'
+    Scraper.scrape_reviews(movie)
+    #list_reviews
     #2nd Level Scraper
   else want_more_input == 'exit'
     goodbye
   end
 end
+
+#def list_reviews
+  #all_movies = Movie.all_movies
+  #all_movies.each.with_index(1) {|movie| puts " #{movie.title}"}
+#end
+
 
   def invalid_choice
     puts ""
