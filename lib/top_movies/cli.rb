@@ -41,7 +41,7 @@ end
 def want_more_info(movie)
   want_more_input = gets.strip.downcase
   if want_more_input == 'y' || want_more_input == 'yes'
-    Scraper.scrape_reviews(movie)
+    #Scraper.scrape_reviews(movie)
     #list_reviews
     #2nd Level Scraper
   else want_more_input == 'exit'
