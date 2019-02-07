@@ -2,7 +2,9 @@ class CLI
 
   def start
     puts "Welcome to the Top 100 Hollywood Rated Movies of All Time!"
-    Scraper.scrape_movies
+  if Movie.all_movies == []
+     Scraper.scrape_movies
+   end
     list_movies
     get_movie
   end
@@ -42,11 +44,29 @@ end
     if want_more_input == 'y' || want_more_input == 'yes'
       Scraper.scrape_reviews(movie)
       puts "#{movie.review}"
-    else want_more_input == 'exit'
+      final_choice
+    elsif want_more_input == 'exit'
       goodbye
-      end
+    else
+      puts "Please choose a valid option...."
+      want_more_info(movie)
     end
   end
+
+
+  def final_choice
+    puts "Would you like to view more movies? Type (y) to view or type (exit). "
+    final_choice_input = gets.strip.downcase
+    if final_choice_input == 'y' || final_choice_input == 'yes'
+    start
+  elsif final_choice_input == "exit"
+    goodbye
+  else
+    puts "Invalid choice..."
+    final_choice
+  end
+end
+
 
   def invalid_choice
     puts ""
@@ -63,3 +83,4 @@ end
       puts "Thank you for viewing the Top 100 Hollywood Movies!!! Goodbye."
     end
   end
+end
