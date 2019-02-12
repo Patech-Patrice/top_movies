@@ -19,7 +19,7 @@ class CLI
     input = gets.strip
     index = input.to_i-1
     movie_object = Movie.all_movies[index]
-  if index.between?(0,99)
+  if index.between?(0,Movie.all_movies.length-1)
     puts "#{movie_object.title}"
     puts "#{movie_object.genre}"
     puts "For more info type (y) to view or type (exit) to return to main menu."
